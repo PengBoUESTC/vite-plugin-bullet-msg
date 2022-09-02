@@ -8,6 +8,8 @@ vite-plugin-bullet-msg
 
 ```javascript
 bulletMsgPlugin({
+  wsProtocol: 'vite-hmr', // ws protocol
+  wsPath: 'xxx', // link
   targetKey: 'TODO',
   rootPath: __dirname
 })

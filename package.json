@@ -1,5 +1,5 @@
 {
-  "name": "vite-plugin-bullet-chat",
+  "name": "vite-plugin-bullet-msg",
   "version": "1.0.2",
   "description": "vite-plugin-bullet-msg",
   "main": "./dist/index.js",
