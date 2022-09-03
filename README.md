@@ -11,6 +11,8 @@ bulletMsgPlugin({
   wsProtocol: 'vite-hmr', // ws protocol
   wsPath: 'xxx', // link
   targetKey: 'TODO',
-  rootPath: __dirname
+  rootPath: __dirname,
+  hoverDuration: 100, // 悬停时长
+  duration: 50, // 动画时长 s
 })
 ```
