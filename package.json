@@ -4,7 +4,7 @@
   "description": "vite-plugin-bullet-msg",
   "main": "./dist/index.js",
   "scripts": {
-    "build": "rimraf -rf dist && tsc"
+    "build": "node build.js && tsc"
   },
   "repository": {
     "type": "git",
@@ -33,6 +33,9 @@
   "homepage": "https://github.com/PengBoUESTC/vite-plugin-bullet-msg#readme",
   "peerDependencies": {
     "vite": "2.9.9"
+  },
+  "dependencies": {
+    "art-template": "^4.13.2"
   },
   "devDependencies": {
     "@types/node": "^18.7.14",
