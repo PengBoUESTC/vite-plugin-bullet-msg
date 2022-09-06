@@ -3,7 +3,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.bulletMsgPlugin = exports.DefaultConfig = void 0;
 const path_1 = require("path");
 const compile_template_1 = require("./compile-template");
-const { style, script, template } = (0, compile_template_1.compile)({
+const { style, script } = (0, compile_template_1.compile)({
     path: './components',
     component: 'Bullet',
 });
@@ -16,7 +16,7 @@ exports.DefaultConfig = {
 };
 const bulletMsgPlugin = (configParams) => {
     configParams = Object.assign(Object.assign({}, exports.DefaultConfig), configParams);
-    const { targetKey, rootPath, } = configParams;
+    const { targetKey, rootPath, dataHandler } = configParams;
     let _server;
     return {
         enforce: 'pre',
@@ -35,11 +35,11 @@ const bulletMsgPlugin = (configParams) => {
                 const nextLineIdx = tempStr.indexOf('\n');
                 resultList.push({
                     target: targetKey + tempStr.slice(0, nextLineIdx),
-                    path: (0, path_1.relative)(rootPath, id)
+                    path: (0, path_1.relative)(rootPath, id),
                 });
             }
             const { ws } = _server;
-            resultList.length && ws.send("vite:bullet-msg", resultList);
+            resultList.length && ws.send('vite:bullet-msg', resultList);
             return code;
         },
         transformIndexHtml: {
@@ -50,17 +50,17 @@ const bulletMsgPlugin = (configParams) => {
                         {
                             tag: 'script',
                             injectTo: 'body',
-                            children: script(configParams)
+                            children: script(configParams),
                         },
                         {
                             tag: 'style',
                             injectTo: 'head',
-                            children: style(configParams)
-                        }
-                    ]
+                            children: dataHandler ? '' : style(configParams),
+                        },
+                    ],
                 };
-            }
-        }
+            },
+        },
     };
 };
 exports.bulletMsgPlugin = bulletMsgPlugin;

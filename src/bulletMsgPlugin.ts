@@ -1,18 +1,25 @@
 import { PluginOption, ViteDevServer } from 'vite';
 import { relative } from 'path';
 import { compile } from './compile-template';
+
+export interface TargetData {
+  target: string;
+  path: string;
+}
 export interface PluginConfig {
   wsPath: string;
   wsProtocol?: string;
   rootPath?: string;
   targetKey?: string;
   duration?: number;
+  hoverDuration?: number;
+  dataHandler?: (data: Array<TargetData>) => void;
 }
 export interface Msg {
   target: string;
   path: string;
 }
-const { style, script, template } = compile({
+const { style, script } = compile({
   path: './components',
   component: 'Bullet',
 });
@@ -27,7 +34,7 @@ export const DefaultConfig = {
 
 export const bulletMsgPlugin = (configParams: PluginConfig): PluginOption => {
   configParams = { ...DefaultConfig, ...configParams };
-  const { targetKey, rootPath } = configParams;
+  const { targetKey, rootPath, dataHandler } = configParams;
   let _server: ViteDevServer;
 
   return {
@@ -67,7 +74,7 @@ export const bulletMsgPlugin = (configParams: PluginConfig): PluginOption => {
             {
               tag: 'style',
               injectTo: 'head',
-              children: style(configParams as any),
+              children: dataHandler ? '' : style(configParams as any),
             },
           ],
         };

@@ -9,15 +9,18 @@ const replaceScriptVar = (code, regx, options) => {
     if (!code)
         return '';
     return code.replace(regx, (_, $1) => {
-        console.log($1, options[$1]);
-        return `'${options[$1]}'`;
+        const value = options[$1];
+        if (value == null)
+            return null;
+        if (typeof value === 'function')
+            return value;
+        return `'${value}'`;
     });
 };
 const replaceStyleVar = (code, regx, options) => {
     if (!code)
         return '';
     return code.replace(regx, (_, $1) => {
-        console.log($1, options[$1]);
         return `${options[$1]}`;
     });
 };

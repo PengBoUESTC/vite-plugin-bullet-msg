@@ -15,25 +15,31 @@ wsToDO.addEventListener('message', async ({ data }) => {
     data = data.data
     window.__Vite_Plugin_Info_ = data || []
   }
-  data.forEach(element => {
-    const { target, path } = element
-    if(!target) return
-    const dom = document.createElement('div')
-    dom.setAttribute('class', 'info-box')
-    dom.setAttribute('style', 'top: ' + getRandom(6) + 'rem' + `;color: rgba(${getRandom(255)}, ${getRandom(255)}, 0, ${getRandom(1)})`)
-    dom.innerText = target + ':' + path
-    document.body.appendChild(dom)
-  });
+  const dataHandler = '#{dataHandler}'
+  if(dataHandler) {
+    dataHandler(data)
+  }else {
+    data.forEach(element => {
+      const { target, path } = element
+      if(!target) return
+      const dom = document.createElement('div')
+      dom.setAttribute('class', 'info-box')
+      dom.setAttribute('style', 'top: ' + getRandom(6) + 'rem' + `;color: rgba(${getRandom(255)}, ${getRandom(255)}, 0, ${getRandom(1)})`)
+      dom.innerText = target + ':' + path
+      document.body.appendChild(dom)
+    });
+  }
 })
 </script>
 
 <style>
   .info-box {
-    font-size: 0.13rem;
     position: absolute;
+    z-index: 999;
     max-width: 200%;
     padding: 0.02rem 0.1rem;
     overflow: hidden;
+    font-size: 0.13rem;
     white-space: nowrap;
     color: #fff;
     font-weight: 700;

@@ -16,3 +16,18 @@ bulletMsgPlugin({
   duration: 50, // 动画时长 s
 })
 ```
+
++ or U can handle the target data yourself
+```javascript
+bulletMsgPlugin({
+  wsProtocol: 'vite-hmr', // ws protocol
+  wsPath: 'xxx', // link
+  targetKey: 'TODO',
+  rootPath: __dirname,
+  hoverDuration: 100, // 悬停时长
+  duration: 50, // 动画时长 s
+  dataHandler: (data) => {
+    console.log(data)
+  }
+})
+```
