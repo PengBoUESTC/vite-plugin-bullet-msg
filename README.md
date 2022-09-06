@@ -27,6 +27,7 @@ bulletMsgPlugin({
   hoverDuration: 100, // 悬停时长
   duration: 50, // 动画时长 s
   dataHandler: (data) => {
+    // U can create a Vue instance to show your data in browser
     console.log(data)
   }
 })

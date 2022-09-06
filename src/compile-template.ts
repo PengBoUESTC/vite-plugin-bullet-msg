@@ -1,6 +1,7 @@
 import { readFileSync } from 'fs';
-const artTemplate = require('art-template');
 import { join, resolve } from 'path';
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+const artTemplate = require('art-template');
 
 export type SourceFn = (config?: Record<string, string>) => string;
 
@@ -48,8 +49,8 @@ const scriptStyleCompile = (
   const styleRes = styleRegx.exec(source);
 
   // 获取指定文本
-  let script = scriptRes ? scriptRes[1] || '' : '';
-  let style = styleRes ? styleRes[1] || '' : '';
+  const script = scriptRes ? scriptRes[1] || '' : '';
+  const style = styleRes ? styleRes[1] || '' : '';
 
   return {
     script: (config: Record<string, string>) =>

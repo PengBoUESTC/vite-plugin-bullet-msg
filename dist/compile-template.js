@@ -2,8 +2,9 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.compile = void 0;
 const fs_1 = require("fs");
-const artTemplate = require('art-template');
 const path_1 = require("path");
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+const artTemplate = require('art-template');
 // 替换 script 中的 变量
 const replaceScriptVar = (code, regx, options) => {
     if (!code)
@@ -34,11 +35,11 @@ const scriptStyleCompile = (source) => {
     const scriptRes = scriptRegx.exec(source);
     const styleRes = styleRegx.exec(source);
     // 获取指定文本
-    let script = scriptRes ? (scriptRes[1] || '') : '';
-    let style = styleRes ? (styleRes[1] || '') : '';
+    const script = scriptRes ? scriptRes[1] || '' : '';
+    const style = styleRes ? styleRes[1] || '' : '';
     return {
         script: (config) => replaceScriptVar(script, varRegx, config),
-        style: (config) => replaceStyleVar(style, varRegx, config)
+        style: (config) => replaceStyleVar(style, varRegx, config),
     };
 };
 const templateCompile = (source) => {
@@ -53,7 +54,7 @@ const compile = (compileConfig) => {
     return {
         style,
         script,
-        template
+        template,
     };
 };
 exports.compile = compile;

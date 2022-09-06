@@ -1,6 +1,6 @@
 {
   "name": "vite-plugin-bullet-msg",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "vite-plugin-bullet-msg",
   "main": "./dist/index.js",
   "scripts": {
