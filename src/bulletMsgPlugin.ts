@@ -40,6 +40,7 @@ export const bulletMsgPlugin = (configParams: PluginConfig): PluginOption => {
   return {
     enforce: 'pre',
     name: 'vite:bullet-msg',
+    apply: 'serve',
     configureServer(server: ViteDevServer) {
       _server = server;
     },
