@@ -1,7 +1,7 @@
 <script>
 const wsToDO = new WebSocket('#{wsPath}', '#{wsProtocol}');
 const container = document.createElement('div');
-container.setAttribute('class', 'info-box--main')
+container.setAttribute('class', 'info-box--main');
 document.body.appendChild(container);
 
 function getRandom(range, base = 0) {
@@ -27,8 +27,8 @@ wsToDO.addEventListener('message', async ({ data }) => {
       if (!target) return;
       const dom = document.createElement('div');
       dom.addEventListener('click', () => {
-        container.innerText = `${path}\n${target}`
-      })
+        container.innerText = `${path}\n${target}`;
+      });
       dom.setAttribute('class', 'info-box');
       dom.setAttribute(
         'style',
@@ -53,7 +53,7 @@ wsToDO.addEventListener('message', async ({ data }) => {
   top: 0;
   right: 0;
   width: 100%;
-  background-color: rgba(0,0,0,0.6);
+  background-color: rgba(0, 0, 0, 0.6);
   padding: 0.1rem;
   line-height: 0.18rem;
   color: #fff;

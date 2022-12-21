@@ -1,3 +1,12 @@
+# [1.1.0](https://github.com/PengBoUESTC/vite-plugin-bullet-msg/compare/v1.0.4...v1.1.0) (2022-12-21)
+
+
+### Features
+
+* remove template ([d0abd47](https://github.com/PengBoUESTC/vite-plugin-bullet-msg/commit/d0abd47d3524fdfe628c22caae0ff4a6a26dc2f0))
+
+
+
 ## 1.0.4 (2022-10-09)
 
 
