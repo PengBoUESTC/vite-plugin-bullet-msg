@@ -1,7 +1,5 @@
 import { readFileSync } from 'fs';
 import { join, resolve } from 'path';
-// eslint-disable-next-line @typescript-eslint/no-var-requires
-const artTemplate = require('art-template');
 
 export type SourceFn = (config?: Record<string, string>) => string;
 
@@ -60,11 +58,6 @@ const scriptStyleCompile = (
   };
 };
 
-const templateCompile: (source: string) => SourceFn = (source: string) => {
-  //art template html 文件解析
-  return artTemplate.compile(source);
-};
-
 export interface CompileConfig {
   path: string;
   component: string;
@@ -75,18 +68,15 @@ export const compile = (
 ): {
   style: SourceFn;
   script: SourceFn;
-  template: SourceFn;
 } => {
   const { path, component } = compileConfig;
   const target = resolve(join(__dirname, path, component));
   const { script, style } = scriptStyleCompile(
     readFileSync(`${target}.vue`).toString(),
   );
-  const template = templateCompile(readFileSync(`${target}.art`).toString());
 
   return {
     style,
     script,
-    template,
   };
 };

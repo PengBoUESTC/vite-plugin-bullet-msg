@@ -12,7 +12,6 @@ bulletMsgPlugin({
   wsPath: 'xxx', // link
   targetKey: 'TODO',
   rootPath: __dirname,
-  hoverDuration: 100, // 悬停时长
   duration: 50, // 动画时长 s
 })
 ```
@@ -24,7 +23,6 @@ bulletMsgPlugin({
   wsPath: 'xxx', // link
   targetKey: 'TODO',
   rootPath: __dirname,
-  hoverDuration: 100, // 悬停时长
   duration: 50, // 动画时长 s
   dataHandler: (data) => {
     // U can create a Vue instance to show your data in browser

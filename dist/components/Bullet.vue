@@ -1,6 +1,9 @@
 <script>
 const wsToDO = new WebSocket('#{wsPath}', '#{wsProtocol}');
-const domTemp = document.createElement('div');
+const container = document.createElement('div');
+container.setAttribute('class', 'info-box--main')
+document.body.appendChild(container);
+
 function getRandom(range, base = 0) {
   return (Math.random() * range + base).toFixed(2);
 }
@@ -23,6 +26,9 @@ wsToDO.addEventListener('message', async ({ data }) => {
       const { target, path } = element;
       if (!target) return;
       const dom = document.createElement('div');
+      dom.addEventListener('click', () => {
+        container.innerText = `${path}\n${target}`
+      })
       dom.setAttribute('class', 'info-box');
       dom.setAttribute(
         'style',
@@ -33,7 +39,7 @@ wsToDO.addEventListener('message', async ({ data }) => {
             1,
           )})`,
       );
-      dom.innerText = target + ':' + path;
+      dom.innerText = `${path}\n${target}`;
       document.body.appendChild(dom);
     });
   }
@@ -41,6 +47,18 @@ wsToDO.addEventListener('message', async ({ data }) => {
 </script>
 
 <style>
+.info-box--main {
+  position: absolute;
+  z-index: 999;
+  top: 0;
+  right: 0;
+  width: 100%;
+  background-color: rgba(0,0,0,0.6);
+  padding: 0.1rem;
+  line-height: 0.18rem;
+  color: #fff;
+  overflow-x: scroll;
+}
 .info-box {
   position: absolute;
   z-index: 999;
@@ -51,21 +69,20 @@ wsToDO.addEventListener('message', async ({ data }) => {
   white-space: nowrap;
   color: #fff;
   font-weight: 700;
+  line-height: 0.18rem;
   animation-duration: '#{duration}'s;
   animation-name: slidein;
   animation-iteration-count: infinite;
   animation-timing-function: cubic-bezier(0.42, 0, 0.58, 1);
   border-radius: 4px;
 }
-.info-box:hover {
-  animation-duration: '#{hoverDuration}'s;
-}
+
 @keyframes slidein {
   from {
     left: 100%;
   }
   to {
-    left: -100%;
+    left: -1000px;
   }
 }
 </style>

@@ -1,1 +1,1 @@
-export * from './bulletMsgPlugin'
+export * from './bulletMsgPlugin';

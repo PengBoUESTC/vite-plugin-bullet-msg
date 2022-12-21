@@ -12,7 +12,6 @@ exports.DefaultConfig = {
     targetKey: 'TODO',
     rootPath: '/',
     duration: 10,
-    hoverDuration: 30,
 };
 const bulletMsgPlugin = (configParams) => {
     configParams = Object.assign(Object.assign({}, exports.DefaultConfig), configParams);

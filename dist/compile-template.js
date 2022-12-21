@@ -3,8 +3,6 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.compile = void 0;
 const fs_1 = require("fs");
 const path_1 = require("path");
-// eslint-disable-next-line @typescript-eslint/no-var-requires
-const artTemplate = require('art-template');
 // 替换 script 中的 变量
 const replaceScriptVar = (code, regx, options) => {
     if (!code)
@@ -42,19 +40,13 @@ const scriptStyleCompile = (source) => {
         style: (config) => replaceStyleVar(style, varRegx, config),
     };
 };
-const templateCompile = (source) => {
-    //art template html 文件解析
-    return artTemplate.compile(source);
-};
 const compile = (compileConfig) => {
     const { path, component } = compileConfig;
     const target = (0, path_1.resolve)((0, path_1.join)(__dirname, path, component));
     const { script, style } = scriptStyleCompile((0, fs_1.readFileSync)(`${target}.vue`).toString());
-    const template = templateCompile((0, fs_1.readFileSync)(`${target}.art`).toString());
     return {
         style,
         script,
-        template,
     };
 };
 exports.compile = compile;

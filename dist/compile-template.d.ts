@@ -6,5 +6,4 @@ export interface CompileConfig {
 export declare const compile: (compileConfig: CompileConfig) => {
     style: SourceFn;
     script: SourceFn;
-    template: SourceFn;
 };

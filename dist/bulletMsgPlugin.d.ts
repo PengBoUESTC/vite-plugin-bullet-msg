@@ -9,7 +9,6 @@ export interface PluginConfig {
     rootPath?: string;
     targetKey?: string;
     duration?: number;
-    hoverDuration?: number;
     dataHandler?: (data: Array<TargetData>) => void;
 }
 export interface Msg {
@@ -21,6 +20,5 @@ export declare const DefaultConfig: {
     targetKey: string;
     rootPath: string;
     duration: number;
-    hoverDuration: number;
 };
 export declare const bulletMsgPlugin: (configParams: PluginConfig) => PluginOption;
